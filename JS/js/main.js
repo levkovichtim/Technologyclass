@@ -21,14 +21,14 @@ let object;
 let controls;
 
 //Set which object to render
-let objToRender = 'eye';
+let objToRender = 'hammer';
 
 //Instantiate a loader for the .gltf file
 const loader = new GLTFLoader();
 
 //Load the file
 loader.load(
-  `./models/${objToRender}/scene.gltf`,
+  `./models/${objToRender}.gltf`,
   function (gltf) {
     //If the file is loaded, add it to the scene
     object = gltf.scene;
@@ -49,7 +49,7 @@ const renderer = new THREE.WebGLRenderer({ alpha: true }); //Alpha: true allows 
 renderer.setSize(window.innerWidth, window.innerHeight);
 
 //Add the renderer to the DOM
-document.getElementById("container3D").appendChild(renderer.domElement);
+document.getElementById("AD").appendChild(renderer.domElement);
 
 //Set how far the camera will be from the 3D model
 camera.position.z = objToRender === "dino" ? 25 : 500;
@@ -74,7 +74,7 @@ function animate() {
   //Here we could add some code to update the scene, adding some automatic movement
 
   //Make the eye move
-  if (object && objToRender === "eye") {
+  if (object && objToRender === "hammer") {
     //I've played with the constants here until it looked good 
     object.rotation.y = -3 + mouseX / window.innerWidth * 3;
     object.rotation.x = -1.2 + mouseY * 2.5 / window.innerHeight;
